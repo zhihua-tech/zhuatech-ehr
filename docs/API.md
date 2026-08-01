@@ -33,3 +33,7 @@ Copyright © 2026 上海如静知华信息科技有限公司。
 | PATCH | `/recruitment/candidates/{id}/stage` | 更新招聘阶段 | 人事、管理员 |
 
 时间使用 ISO 8601 本地时间；薪资月份使用 `YYYY-MM`。接口扩展需保持向后兼容，破坏性变更应发布新的主版本。
+
+## 部门用工风险
+
+`POST /api/workforce/risk-assessment`：仅 HR 与管理员可用，返回部门风险分、等级和人才干预建议。

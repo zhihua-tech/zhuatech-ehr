@@ -40,6 +40,16 @@ class EhrApiIntegrationTests {
         mvc.perform(get("/api/dashboard")).andExpect(status().isForbidden());
     }
 
+    @Test void hrCanAssessDepartmentWorkforceRisk() throws Exception {
+        String token=login("hr", "Demo@2026", "HR");
+        mvc.perform(post("/api/workforce/risk-assessment").header("Authorization", "Bearer "+token)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"department\":\"交付中心\",\"headcount\":100,\"openPositions\":10,\"overtimeRate\":0.4,\"absenceRate\":0.08,\"criticalSkillGap\":true}"))
+            .andExpect(status().isOk()).andExpect(jsonPath("$.data.riskScore").value(42))
+            .andExpect(jsonPath("$.data.level").value("HIGH"))
+            .andExpect(jsonPath("$.data.hrReview").value(true));
+    }
+
     private String login(String username, String password, String role) throws Exception {
         String body=mvc.perform(post("/api/auth/login").contentType(MediaType.APPLICATION_JSON)
                 .content("{\"username\":\""+username+"\",\"password\":\""+password+"\"}"))
