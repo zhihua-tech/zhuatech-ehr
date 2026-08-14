@@ -6,6 +6,7 @@
 
 ### Added
 
+- 新增员工留任风险预警及访谈、薪酬、负荷和发展建议。
 - 初始化知华科技 EHR 社区源码版单仓库。
 - Java 21 / Spring Boot / MySQL 后端与 `cn.zhuatech.ehr` 根包。
 - Vue 3 / Vant 移动端 H5。
