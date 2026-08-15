@@ -37,3 +37,7 @@ Copyright © 2026 上海如静知华信息科技有限公司。
 ## 部门用工风险
 
 `POST /api/workforce/risk-assessment`：仅 HR 与管理员可用，返回部门风险分、等级和人才干预建议。
+
+## 部门人力产能
+
+`POST /api/ehr/insights/workforce-capacity`：按需求、有效可用工时、加班、缺勤和关键岗位空缺返回产能缺口、风险与团队规划建议。
