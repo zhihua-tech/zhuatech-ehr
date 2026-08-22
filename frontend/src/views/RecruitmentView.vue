@@ -1,4 +1,4 @@
-<!-- Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. -->
+<!-- Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ -->
 <script setup>
 import { computed,onMounted,ref } from 'vue';import { api } from '../api/ehr';import { useAuthStore } from '../stores/auth'
 const auth=useAuthStore(),jobs=ref([]),candidates=ref([]),tab=ref(0);const allowed=computed(()=>['ADMIN','HR'].includes(auth.user?.role));const jobLabels={OPEN:'招聘中',DRAFT:'草稿',CLOSED:'已关闭'};const stageLabels={APPLIED:'已投递',SCREENING:'筛选中',INTERVIEW:'面试中',OFFER:'已发 Offer',HIRED:'已录用',REJECTED:'已淘汰'}

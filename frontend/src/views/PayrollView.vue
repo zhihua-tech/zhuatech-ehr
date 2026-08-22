@@ -1,4 +1,4 @@
-<!-- Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. -->
+<!-- Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ -->
 <script setup>
 import { computed,onMounted,ref } from 'vue';import { api } from '../api/ehr';import { useAuthStore } from '../stores/auth'
 const auth=useAuthStore(),items=ref([]);const canManage=computed(()=>['ADMIN','HR'].includes(auth.user?.role));const money=v=>Number(v||0).toLocaleString('zh-CN',{minimumFractionDigits:2});const labels={DRAFT:'草稿',CONFIRMED:'已确认',PAID:'已发放'}

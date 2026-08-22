@@ -1,4 +1,4 @@
-/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.ehr.repository;
 import cn.zhuatech.ehr.model.*;
 import org.springframework.data.jpa.repository.JpaRepository;
