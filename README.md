@@ -1,5 +1,9 @@
 # ZhuaTech EHR — 知华科技 EHR 社区源码版
 
+## 企业级增强：员工离职清算治理
+
+新增普通/特权访问回收、资产、薪资、费用、知识交接和双重确认门禁，详见 [离职清算治理](docs/ENTERPRISE_EXIT_CLEARANCE.md)。
+
 [![License](https://img.shields.io/badge/license-Community_Source_Noncommercial-orange.svg)](LICENSE)
 [![Java](https://img.shields.io/badge/Java-21-ED8B00.svg)](backend/pom.xml)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0-6DB33F.svg)](backend/pom.xml)
