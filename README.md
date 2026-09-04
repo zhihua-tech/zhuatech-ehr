@@ -4,6 +4,10 @@
 
 新增普通/特权访问回收、资产、薪资、费用、知识交接和双重确认门禁，详见 [离职清算治理](docs/ENTERPRISE_EXIT_CLEARANCE.md)。
 
+## 企业级增强：员工主数据变更
+
+新增员工身份、组织岗位、薪酬、工资账户、个税社保、生效周期、隐私最小化、下游影响、人事审批、职责分离和审计证据联合控制，详见[员工主数据变更治理](docs/ENTERPRISE_EMPLOYEE_MASTER_DATA_CHANGE.md)。
+
 [![License](https://img.shields.io/badge/license-Community_Source_Noncommercial-orange.svg)](LICENSE)
 [![Java](https://img.shields.io/badge/Java-21-ED8B00.svg)](backend/pom.xml)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0-6DB33F.svg)](backend/pom.xml)
