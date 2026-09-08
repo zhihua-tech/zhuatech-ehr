@@ -1,5 +1,9 @@
 # ZhuaTech EHR — 知华科技 EHR 社区源码版
 
+## 企业级增强：薪酬变更治理
+
+新增职级带宽、预算、合同、经理/人力/薪资审批、职责分离、税社保、敏感权限、幂等和追溯调薪治理，详见[薪酬变更治理](docs/ENTERPRISE_COMPENSATION_CHANGE.md)。
+
 ## 企业级增强：员工离职清算治理
 
 新增普通/特权访问回收、资产、薪资、费用、知识交接和双重确认门禁，详见 [离职清算治理](docs/ENTERPRISE_EXIT_CLEARANCE.md)。
