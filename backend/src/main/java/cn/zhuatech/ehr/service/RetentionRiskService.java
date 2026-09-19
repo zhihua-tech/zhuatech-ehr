@@ -9,8 +9,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class RetentionRiskService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result assess(Request request) {
         int score = 0;
         if (request.engagementScore() < 50) score += 30;
@@ -33,6 +39,9 @@ public class RetentionRiskService {
         return new Result(request.employeeNo(), score, level, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String employeeNo,
                           @Min(0) @Max(100) int engagementScore,
                           @Min(0) @Max(100) int compensationGapPercent,
@@ -40,6 +49,9 @@ public class RetentionRiskService {
                           @Min(0) int absenceDaysLast90,
                           @Min(0) int monthsSincePromotion,
                           @Min(0) int tenureMonths) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String employeeNo, int riskScore, String riskLevel,
                          List<String> retentionActions) {}
 }

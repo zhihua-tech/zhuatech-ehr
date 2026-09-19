@@ -15,11 +15,20 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class AiTalentMatchService {
     private final OpenAiCompatibleGateway gateway;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public AiTalentMatchService(OpenAiCompatibleGateway gateway) { this.gateway = gateway; }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result match(Request request) {
         Set<String> candidateSkills = new HashSet<>(request.candidateSkills().stream()
             .map(value -> value.trim().toLowerCase(Locale.ROOT)).toList());
@@ -46,11 +55,17 @@ public class AiTalentMatchService {
             enhanced.isPresent() ? "EXTERNAL_MODEL" : "LOCAL_RULES", metadata.provider(), metadata.model());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String jobTitle, @NotEmpty List<@NotBlank String> requiredSkills,
                           @NotNull List<@NotBlank String> candidateSkills, @Min(0) int requiredExperienceYears,
                           @Min(0) int candidateExperienceYears, @NotNull Boolean certificationRequired,
                           @NotNull Boolean certificationPresent, @DecimalMin("0") BigDecimal salaryBudget,
                           @DecimalMin("0") BigDecimal expectedSalary) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(int matchScore, String decision, List<String> missingSkills, boolean salaryFit,
                          String interviewAdvice, String aiMode, String provider, String model) {}
 }

@@ -6,8 +6,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class EmployeeExitClearanceGovernanceService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Assessment assess(Request request) {
         List<String> blockers = new ArrayList<>();
         List<String> actions = new ArrayList<>();
@@ -25,13 +31,22 @@ public class EmployeeExitClearanceGovernanceService {
         return new Assessment(request.employeeNo(), decision, List.copyOf(blockers), List.copyOf(actions));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String employeeNo, boolean lastWorkingDayConfirmed,
                           boolean accessRevoked, boolean privilegedAccount,
                           boolean privilegedAccessRevoked, boolean assetsReturned,
                           boolean payrollSettled, boolean expensesSettled,
                           boolean knowledgeTransferred, boolean managerApproved,
                           boolean hrApproved) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Assessment(String employeeNo, Decision decision, List<String> blockers,
                              List<String> actions) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum Decision { CLOSE, REVIEW, BLOCK }
 }

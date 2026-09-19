@@ -6,12 +6,21 @@ import cn.zhuatech.ehr.service.RetentionRiskService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestController
 @RequestMapping("/api/ehr/insights")
 public class RetentionRiskController {
     private final RetentionRiskService service;
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public RetentionRiskController(RetentionRiskService service) { this.service = service; }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/retention-risk")
     public ApiResponse<RetentionRiskService.Result> assess(@Valid @RequestBody RetentionRiskService.Request request) {
         return ApiResponse.ok(service.assess(request));

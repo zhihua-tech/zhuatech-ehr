@@ -11,8 +11,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class WorkforceRiskService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result assess(Request request) {
         double vacancyRatio = (double) request.openPositions() / request.headcount();
         int score = Math.min(100, (int) Math.round(request.overtimeRate() * 30
@@ -27,11 +33,17 @@ public class WorkforceRiskService {
         return new Result(request.department(), score, level, score >= 40, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String department, @Positive int headcount,
                           @Min(0) int openPositions,
                           @DecimalMin("0") @DecimalMax("1") double overtimeRate,
                           @DecimalMin("0") @DecimalMax("1") double absenceRate,
                           boolean criticalSkillGap) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String department, int riskScore, String level,
                          boolean hrReview, List<String> actions) {}
 }

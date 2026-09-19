@@ -6,9 +6,15 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class EmployeeMasterDataChangeGovernanceServiceTest {
     private final EmployeeMasterDataChangeGovernanceService service = new EmployeeMasterDataChangeGovernanceService();
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void appliesControlledEmployeeChange() {
         var result = service.assess(request(true, true, true));
         assertEquals(EmployeeMasterDataChangeGovernanceService.Decision.APPLY, result.decision());
@@ -16,12 +22,18 @@ class EmployeeMasterDataChangeGovernanceServiceTest {
         assertTrue(result.actions().isEmpty());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void reviewsChangeWithOperationalActions() {
         var result = service.assess(request(false, false, false));
         assertEquals(EmployeeMasterDataChangeGovernanceService.Decision.REVIEW, result.decision());
         assertEquals(3, result.actions().size());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void blocksUncontrolledSensitiveChange() {
         var result = service.assess(new EmployeeMasterDataChangeGovernanceService.Request("CHG-003", "EMP-003",
                 LocalDate.of(2026, 9, 10), false, false, false, false, true, false, true, false,
@@ -30,6 +42,9 @@ class EmployeeMasterDataChangeGovernanceServiceTest {
         assertEquals(13, result.blockers().size());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void ignoresUnaffectedCompensationAndBankControls() {
         var request = request(true, true, true);
         var result = service.assess(new EmployeeMasterDataChangeGovernanceService.Request(request.changeRequestId(),
@@ -38,6 +53,9 @@ class EmployeeMasterDataChangeGovernanceServiceTest {
         assertEquals(EmployeeMasterDataChangeGovernanceService.Decision.APPLY, result.decision());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private EmployeeMasterDataChangeGovernanceService.Request request(boolean notice, boolean payroll, boolean access) {
         return new EmployeeMasterDataChangeGovernanceService.Request("CHG-001", "EMP-001",
                 LocalDate.of(2026, 9, 10), true, true, true, true, true, true, true, true,

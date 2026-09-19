@@ -11,8 +11,14 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class WorkforceCapacityService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result analyze(Request request) {
         BigDecimal effectiveHours = request.availableHours().multiply(
             BigDecimal.ONE.subtract(BigDecimal.valueOf(request.absenceRatePercent()).divide(BigDecimal.valueOf(100), 4, RoundingMode.HALF_UP)));
@@ -34,12 +40,18 @@ public class WorkforceCapacityService {
             "仅用于团队产能规划，不用于自动化雇佣或人员淘汰决策");
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String departmentCode,
                           @DecimalMin("0.01") BigDecimal requiredHours,
                           @DecimalMin("0") BigDecimal availableHours,
                           @DecimalMin("0") BigDecimal overtimeHours,
                           @Min(0) @Max(100) int absenceRatePercent,
                           @Min(0) int criticalRoleVacancies) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String departmentCode, BigDecimal effectiveHours, BigDecimal capacityGapHours,
                          BigDecimal loadRate, String riskLevel, List<String> actions, String usageNotice) {}
 }

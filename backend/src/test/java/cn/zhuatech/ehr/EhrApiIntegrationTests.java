@@ -12,11 +12,17 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 class EhrApiIntegrationTests {
     @Autowired MockMvc mvc;
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void employeeCanLoginAndReadPersonalEhrData() throws Exception {
         String token=login("demo", "Demo@2026", "EMPLOYEE");
         mvc.perform(get("/api/dashboard").header("Authorization", "Bearer "+token))
@@ -27,6 +33,9 @@ class EhrApiIntegrationTests {
             .andExpect(status().isOk()).andExpect(jsonPath("$.data[0].status").value("PENDING"));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void hrCanReadEmployeesAndRecruitmentData() throws Exception {
         String token=login("hr", "Demo@2026", "HR");
         mvc.perform(get("/api/employees").header("Authorization", "Bearer "+token))
@@ -36,10 +45,16 @@ class EhrApiIntegrationTests {
             .andExpect(status().isOk()).andExpect(jsonPath("$.data[0].stage").value("INTERVIEW"));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void unauthenticatedRequestsAreRejected() throws Exception {
         mvc.perform(get("/api/dashboard")).andExpect(status().isForbidden());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void hrCanAssessDepartmentWorkforceRisk() throws Exception {
         String token=login("hr", "Demo@2026", "HR");
         mvc.perform(post("/api/workforce/risk-assessment").header("Authorization", "Bearer "+token)
@@ -50,6 +65,9 @@ class EhrApiIntegrationTests {
             .andExpect(jsonPath("$.data.hrReview").value(true));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private String login(String username, String password, String role) throws Exception {
         String body=mvc.perform(post("/api/auth/login").contentType(MediaType.APPLICATION_JSON)
                 .content("{\"username\":\""+username+"\",\"password\":\""+password+"\"}"))

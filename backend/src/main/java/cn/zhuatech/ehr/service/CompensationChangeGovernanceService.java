@@ -1,8 +1,14 @@
 /* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 package cn.zhuatech.ehr.service;
 import jakarta.validation.constraints.*;import org.springframework.stereotype.Service;import java.math.BigDecimal;import java.time.LocalDate;import java.util.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class CompensationChangeGovernanceService{
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public Assessment assess(Request r){
   List<String> blockers=new ArrayList<>();List<String> actions=new ArrayList<>();
   if(!r.employmentRecordActive())blockers.add("员工任职记录无效");
@@ -24,6 +30,9 @@ public class CompensationChangeGovernanceService{
   String route=risk==RiskLevel.HIGH?"直属经理→HRBP→薪酬负责人→财务":"直属经理→HRBP→薪资专员";
   return new Assessment(r.changeNo(),decision,risk,route,rate,List.copyOf(blockers),List.copyOf(actions));
  }
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record Request(@NotBlank String changeNo,@NotBlank String requesterId,@NotBlank String payrollApproverId,
   @NotNull @DecimalMin("0.00")BigDecimal currentAnnualSalary,@NotNull @DecimalMin("0.00")BigDecimal newAnnualSalary,
   @NotNull LocalDate effectiveDate,boolean employmentRecordActive,boolean gradeBandValidated,boolean budgetAvailable,
@@ -31,6 +40,15 @@ public class CompensationChangeGovernanceService{
   boolean payrollApproved,boolean taxAndSocialInsuranceAssessed,boolean sensitiveAccessRestricted,
   boolean idempotencyKeyRegistered,boolean retroAdjustmentCalculated,boolean employeeNotificationScheduled,
   boolean auditEvidenceAttached){}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record Assessment(String changeNo,Decision decision,RiskLevel riskLevel,String approvalRoute,BigDecimal changeRate,List<String> blockers,List<String> actions){}
- public enum Decision{APPLY,REVIEW,BLOCKED}public enum RiskLevel{NORMAL,HIGH}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
+ public enum Decision{APPLY,REVIEW,BLOCKED}/**
+                                            * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+                                            */
+public enum RiskLevel{NORMAL,HIGH}
 }
