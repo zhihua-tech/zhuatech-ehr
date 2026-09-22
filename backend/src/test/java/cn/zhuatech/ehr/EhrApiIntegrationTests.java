@@ -74,7 +74,7 @@ class EhrApiIntegrationTests {
      * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
      */
     @Test void unauthenticatedRequestsAreRejected() throws Exception {
-        mvc.perform(get("/api/dashboard")).andExpect(status().isForbidden());
+        mvc.perform(get("/api/dashboard")).andExpect(status().isUnauthorized());
     }
 
     /**
