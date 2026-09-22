@@ -14,4 +14,5 @@ app:
   jwt:
     secret: test-zhuatech-secret-key-at-least-32-bytes-long
   cors:
-    allowed-origins: http://localhost:5173,http://127.0.0.1:8088
+    # 模拟旧版 .env：后端仍须自动兼容 127.0.0.1:8088。
+    allowed-origins: http://localhost:8088

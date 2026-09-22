@@ -72,7 +72,7 @@ docker compose exec -T mysql sh -c \
 docker compose up --build -d
 ```
 
-当前版本同时允许 `localhost` 和 `127.0.0.1`。如使用其他域名、IP 或端口，请在 `.env` 的 `CORS_ORIGINS` 中填写完整来源，多个来源以英文逗号分隔。
+当前版本会兼容旧 `.env`，并始终允许默认开发端口上的 `localhost` 和 `127.0.0.1`。更新后请使用 `docker compose up --build -d --force-recreate`，确保后端和前端容器均使用新代码。如使用其他域名、IP 或端口，请在 `.env` 的 `CORS_ORIGINS` 中填写完整来源，多个来源以英文逗号分隔。
 
 脚本使用唯一键和存在性判断降低重复导入风险，不会明文保存密码。所有姓名、电话、邮箱、考勤、薪资和招聘记录均为虚构数据，邮箱使用 `.invalid` 保留域名。
 

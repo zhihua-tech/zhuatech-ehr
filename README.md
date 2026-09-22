@@ -98,7 +98,7 @@ docker compose exec -T mysql sh -c 'mysql -uroot -p"$MYSQL_ROOT_PASSWORD" "$MYSQ
   < database/03-repair-demo-accounts.sql
 ```
 
-通过 `127.0.0.1:8088` 或其他地址访问时如遇登录 403，请确认已执行 `docker compose up --build -d`，并按 [`database/README.md`](database/README.md) 配置 `CORS_ORIGINS`；403 通常是来源地址未放行，而不是账号或密码错误。
+通过 `127.0.0.1:8088` 或其他地址访问时如遇登录 403，请确认已执行 `docker compose up --build -d --force-recreate`，并按 [`database/README.md`](database/README.md) 配置 `CORS_ORIGINS`；403 通常是来源地址未放行，而不是账号或密码错误。
 
 停止服务：
 

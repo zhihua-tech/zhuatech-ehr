@@ -17,7 +17,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.*;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
@@ -42,7 +44,12 @@ public class SecurityConfig {
      * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
      */
     @Bean CorsConfigurationSource corsConfigurationSource(@Value("${app.cors.allowed-origins}") List<String> origins) {
-        CorsConfiguration c = new CorsConfiguration(); c.setAllowedOrigins(origins); c.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")); c.setAllowedHeaders(List.of("*")); c.setAllowCredentials(true);
+        Set<String> effectiveOrigins = new LinkedHashSet<>(origins);
+        effectiveOrigins.addAll(List.of(
+            "http://localhost:5173", "http://127.0.0.1:5173",
+            "http://localhost:8088", "http://127.0.0.1:8088"
+        ));
+        CorsConfiguration c = new CorsConfiguration(); c.setAllowedOrigins(List.copyOf(effectiveOrigins)); c.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")); c.setAllowedHeaders(List.of("*")); c.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(); source.registerCorsConfiguration("/**", c); return source;
     }
     /**
