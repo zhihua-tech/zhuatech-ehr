@@ -81,6 +81,7 @@ docker compose up --build -d
 
 - [`database/01-schema.sql`](database/01-schema.sql)：建库、核心业务表、约束和索引；
 - [`database/02-demo-data.sql`](database/02-demo-data.sql)：部门、账号、考勤、假勤、薪资、职位和候选人演示数据；
+- [`database/03-repair-demo-accounts.sql`](database/03-repair-demo-accounts.sql)：为已有演示数据库补齐或重置基础体验账号；
 - [`database/README.md`](database/README.md)：导入顺序、初始化账号、数据检查和生产安全说明。
 
 ```bash
@@ -89,6 +90,15 @@ mysql -uroot -p < database/02-demo-data.sql
 ```
 
 使用 Spring Boot 启动时，Flyway 会自动执行 `V1__init.sql` 和 `V2__demo_data.sql`，无需再手工导入。所有初始化人员和业务记录均为虚构数据。
+
+已有数据库若缺少体验账号，可执行：
+
+```bash
+docker compose exec -T mysql sh -c 'mysql -uroot -p"$MYSQL_ROOT_PASSWORD" "$MYSQL_DATABASE"' \
+  < database/03-repair-demo-accounts.sql
+```
+
+通过 `127.0.0.1:8088` 或其他地址访问时如遇登录 403，请确认已执行 `docker compose up --build -d`，并按 [`database/README.md`](database/README.md) 配置 `CORS_ORIGINS`；403 通常是来源地址未放行，而不是账号或密码错误。
 
 停止服务：
 

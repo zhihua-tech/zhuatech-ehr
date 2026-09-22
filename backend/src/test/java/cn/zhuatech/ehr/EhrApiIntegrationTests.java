@@ -36,6 +36,31 @@ class EhrApiIntegrationTests {
     /**
      * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
      */
+    @Test void dockerComposeLoginAllowsIpv4LoopbackOrigin() throws Exception {
+        mvc.perform(post("/api/auth/login")
+                .header("Origin", "http://127.0.0.1:8088")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"username\":\"demo\",\"password\":\"Demo@2026\"}"))
+            .andExpect(status().isOk())
+            .andExpect(header().string("Access-Control-Allow-Origin", "http://127.0.0.1:8088"))
+            .andExpect(jsonPath("$.data.user.username").value("demo"));
+    }
+
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
+    @Test void invalidPasswordReturnsUnauthorizedInsteadOfCorsForbidden() throws Exception {
+        mvc.perform(post("/api/auth/login")
+                .header("Origin", "http://127.0.0.1:8088")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"username\":\"demo\",\"password\":\"wrong-password\"}"))
+            .andExpect(status().isUnauthorized())
+            .andExpect(jsonPath("$.message").value("用户名或密码错误"));
+    }
+
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test void hrCanReadEmployeesAndRecruitmentData() throws Exception {
         String token=login("hr", "Demo@2026", "HR");
         mvc.perform(get("/api/employees").header("Authorization", "Bearer "+token))
