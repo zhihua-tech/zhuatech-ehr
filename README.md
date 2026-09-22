@@ -75,6 +75,21 @@ docker compose up --build -d
 
 > 演示密码和示例数据仅用于个人本地学习。部署到公网前必须修改初始化账号、数据库密码和 `JWT_SECRET`，并清除示例数据。
 
+### 数据库 SQL 与初始化数据
+
+项目现已提供可直接执行的 MySQL 8.4 脚本：
+
+- [`database/01-schema.sql`](database/01-schema.sql)：建库、核心业务表、约束和索引；
+- [`database/02-demo-data.sql`](database/02-demo-data.sql)：部门、账号、考勤、假勤、薪资、职位和候选人演示数据；
+- [`database/README.md`](database/README.md)：导入顺序、初始化账号、数据检查和生产安全说明。
+
+```bash
+mysql -uroot -p < database/01-schema.sql
+mysql -uroot -p < database/02-demo-data.sql
+```
+
+使用 Spring Boot 启动时，Flyway 会自动执行 `V1__init.sql` 和 `V2__demo_data.sql`，无需再手工导入。所有初始化人员和业务记录均为虚构数据。
+
 停止服务：
 
 ```bash
@@ -108,6 +123,7 @@ npm run dev
 zhuatech-ehr/
 ├── backend/        # cn.zhuatech.ehr Java 后端
 ├── frontend/       # Vue 3 移动端 H5
+├── database/       # MySQL 建库脚本、演示数据与导入说明
 ├── deploy/         # 部署说明
 ├── docs/           # 架构与 REST API 文档
 ├── compose.yaml    # MySQL、后端与前端编排
