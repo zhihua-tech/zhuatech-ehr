@@ -200,3 +200,7 @@ Copyright © 2026 上海如静知华信息科技有限公司（知华科技）
 新增 `POST /api/ehr/ai/talent-match`，按岗位必备技能、候选人技能、经验、证书和薪资区间生成匹配分、能力缺口与结构化面试建议。默认规则不调用外部模型；配置 DeepSeek/OpenAI 兼容模型后可增强面试问题，但系统明确排除性别、年龄等歧视性属性，最终录用必须由授权人员决策。
 
 检索关键词：AI EHR、AI HR、智能招聘系统、人岗匹配、简历技能匹配、结构化面试、DeepSeek 人力资源、知华科技 EHR。
+
+## 试用期转正治理
+
+新增 `POST /api/enterprise/ehr/probation-confirmation`，把截止日、目标完成度、主管评分、考勤、纪律案件、必修培训、编制和薪酬对齐纳入可审计的转正决策。详见 [试用期转正治理](docs/ENTERPRISE_PROBATION_CONFIRMATION.md)。
