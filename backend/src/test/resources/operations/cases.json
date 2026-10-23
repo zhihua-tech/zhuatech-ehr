@@ -1,0 +1,49 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "PASS",
+      "proratedDays": "#9",
+      "remainingDays": "#3"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "usedDays": "12"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "overusedDays": "#1"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "carryApproved": "NO"
+    },
+    "expected": {
+      "decision": "HOLD"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "eligibleMonths": "13"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "annualDays": "10",
+      "eligibleMonths": "1",
+      "carryDays": "0",
+      "usedDays": "0"
+    },
+    "expected": {
+      "proratedDays": "#0.83"
+    },
+    "error": false
+  }
+]
