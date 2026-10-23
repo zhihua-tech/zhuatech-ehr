@@ -1,0 +1,86 @@
+{
+  "slug": "ehr",
+  "title": "员工入离职日期与合同效期预检",
+  "fields": [
+    {
+      "key": "employee_no",
+      "label": "工号",
+      "type": "ID",
+      "length": 200
+    },
+    {
+      "key": "name",
+      "label": "姓名",
+      "type": "TEXT",
+      "length": 200
+    },
+    {
+      "key": "email",
+      "label": "工作邮箱",
+      "type": "EMAIL",
+      "length": 200
+    },
+    {
+      "key": "hire_date",
+      "label": "入职日期",
+      "type": "DATE",
+      "length": 200
+    },
+    {
+      "key": "contract_end",
+      "label": "合同截止",
+      "type": "DATE",
+      "length": 200
+    },
+    {
+      "key": "status",
+      "label": "状态",
+      "type": "ENUM",
+      "length": 200,
+      "options": [
+        "ACTIVE",
+        "PROBATION",
+        "LEFT"
+      ]
+    }
+  ],
+  "unique": [
+    [
+      "employee_no"
+    ],
+    [
+      "email"
+    ]
+  ],
+  "rules": [
+    {
+      "op": "DATE_LE",
+      "args": [
+        "hire_date",
+        "contract_end"
+      ],
+      "code": "CONTRACT_DATE",
+      "message": "合同截止不能早于入职日期",
+      "bad": {
+        "contract_end": "2025-12-31"
+      }
+    },
+    {
+      "op": "EXPIRY",
+      "args": [
+        "contract_end"
+      ],
+      "code": "EXPIRY",
+      "message": "合同效期提醒",
+      "bad": null
+    }
+  ],
+  "sampleCsv": "employee_no,name,email,hire_date,contract_end,status\nEMP-001,示例员工,employee@example.invalid,2026-01-01,2027-12-31,ACTIVE\n",
+  "limits": {
+    "rows": 500,
+    "bytes": 262144,
+    "columns": 32,
+    "cellCharacters": 4000
+  },
+  "scope": "Read-only batch validation; no persistence, reference-master lookup or full production certification."
+}
